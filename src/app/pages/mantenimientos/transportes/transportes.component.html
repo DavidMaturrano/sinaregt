@@ -1,0 +1,152 @@
+
+<!-- <div>
+    <div class="col">
+        <div class="text-left">
+            <button class="btn btn-primary"  class="btn btn-rounded btn-success"
+                    (click)="abrirSweetAlert()"> 
+                <i class="fa fa-hospital-o"></i> 
+                Crear hospital
+            </button>
+        </div>
+    </div>
+</div>
+<br> -->
+<!-- <div class="row animated fadeIn fast">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+                
+                <input type="text"
+                        class="form-control"
+                        placeholder="Buscar hospital..."
+                        #txtTermino
+                        (keyup)="buscar(txtTermino.value)"/>
+
+            </div>
+        </div>
+    </div>
+</div>  -->
+
+<!-- <div class="row animated fadeIn fast"
+    *ngIf="cargando">
+    <div class="col-12">
+        
+        <div class="alert alert-info text-center">
+          <h4 class="alert-heading">Cargando</h4>
+          <i class="fa fa-spin fa-refresh fa-2x"></i>
+          <p class="mb-0">Por favor espere</p>
+        </div>
+
+    </div>
+</div>  -->
+
+<!-- *ngIf="!cargando" -->
+<div class="row">
+
+    <div class="col-6">
+        <div class="card">
+            <div class="card-body">
+
+                <div class="row">
+                    <div class="col-8">
+                        <h4 class="card-title">Transportes ({{ this.transports.length || 0 }})</h4>
+                        <h6 class="card-subtitle">
+                            Transportes registrados en mi aplicación
+                        </h6>
+                    </div>
+
+                </div>
+
+
+                <div class="table-responsive">
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th class="w100">ID</th>
+                                <th>Usuario</th>
+                                <th class="w100 text-nowrap">Nro de Placa</th>
+                                <th class="w100 text-nowrap">Más</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let transport of transports">
+                                <td class="text-center"> 
+                                    <span>
+                                        {{ transport._id }}
+                                    </span>
+                                <td>
+                                    <span>
+                                        {{ transport.usuario.nombre }}
+                                    </span>
+                                </td>
+                                <td>
+                                    <span>
+                                        {{ transport.numero_placa }}
+                                    </span>
+                                </td>
+                                
+                                <td class="text-nowrap text-center">
+                                    <a (click)="getTransport( transport._id )"
+                                        data-toggle="tooltip" 
+                                        class="cursor"
+                                        data-original-title="Ver Más"> 
+                                        <i class="fa fa-plus text-inverse m-r-10"></i> 
+                                    </a>
+                                </td>
+                            </tr>
+                            
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- <button class="btn btn-secondary">Anteriores</button>
+                &nbsp;
+                <button class="btn btn-secondary">Siguientes</button> -->
+
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-6">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">Pantalla de Información</h4>
+                <h6 class="card-subtitle">Información: Tranporte</h6>
+
+                    <div class="form-group" *ngFor="let estado of transport_unit | keyvalue">
+                        <div *ngIf="estado.key != 'usuario'">
+                            <label for="{{estado.key}}" >{{estado.key | uppercase}}</label>
+                            <div class="input-group">
+                                <div class="input-group-addon"><i class="ti-user"></i></div>
+                                <input type="text"
+                                        class="form-control"
+                                        id="{{estado.key}}"
+                                        [(ngModel)]="estado.value"
+                                        value="{{ estado.value }}">
+                            </div>
+                        </div>
+                    </div>
+
+                <br>
+                <h6 class="card-subtitle">Información: Usuario</h6>
+
+                <div class="form-group" *ngFor="let property of usuario | keyvalue">
+                    <div *ngIf="property.key != 'role' && property.key != 'password'">
+                    <label for="{{property.key}}" >{{property.key | uppercase}}</label>
+                        <div class="input-group">
+                            <div class="input-group-addon"><i class="ti-user"></i></div>
+                            <input type="text"
+                                    class="form-control"
+                                    id="{{property.key}}"
+                                    [(ngModel)]="property.value"
+                                    value="{{ property.value }}">
+                        </div>
+                    </div>
+                </div>
+                    
+
+            </div>
+        </div>
+    </div>
+</div>
+

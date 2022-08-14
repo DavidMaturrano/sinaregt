@@ -18,6 +18,10 @@ import { PacientesComponent } from './mantenimientos/pacientes/pacientes.compone
 import { PacienteComponent } from './mantenimientos/pacientes/paciente.component';
 import { BusquedaComponent } from './busqueda/busqueda.component';
 import { AdminGuard } from '../guards/admin.guard';
+import { SunatComponent } from './mantenimientos/sunat/sunat/sunat.component';
+import { ReniecComponent } from './mantenimientos/reniec/reniec.component';
+import { TransportesComponent } from './mantenimientos/transportes/transportes.component';
+import { PlacaComponent } from './mantenimientos/placa/placa.component';
 
 
 const childRoutes: Routes = [
@@ -36,6 +40,12 @@ const childRoutes: Routes = [
   { path: 'medico/:id', component: MedicoComponent, data: { titulo: 'Matenimiento de Medicos' }},
   { path: 'pacientes', component: PacientesComponent, data: { titulo: 'Matenimiento de Pacientes' }},
   { path: 'paciente/:id', component: PacienteComponent, data: { titulo: 'Matenimiento de Pacientes' }},
+
+  //API's
+  { path: 'sunat', component: SunatComponent, data: { titulo: 'Sunat API' }},
+  { path: 'reniec', component: ReniecComponent, data: { titulo: 'Reniec API' }},
+  { path: 'transport', component: TransportesComponent, data: { titulo: 'Transportes API' }},
+  { path: 'placaSearch', component: PlacaComponent, data: { titulo: 'Busqueda por Placa - API' }},
 
   // Rutas de Admin
   { path: 'usuarios', canActivate: [ AdminGuard ], component: UsuariosComponent, data: { titulo: 'Matenimiento de Usuarios' }},

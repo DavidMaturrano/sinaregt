@@ -1,0 +1,24 @@
+<div class="row">
+
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">API Reniec</h4>
+                <h6 class="card-subtitle">Vista General</h6>
+
+                    <div class="form-group" *ngFor="let estado of reniec_object | keyvalue">
+                        <label for="{{estado.key}}" >{{estado.key | uppercase}}</label>
+                        <div class="input-group">
+                            <div class="input-group-addon"><i class="ti-user"></i></div>
+                            <input type="text"
+                                    class="form-control"
+                                    id="{{estado.key}}"
+                                    [(ngModel)]="estado.value"
+                                    value="{{ estado.value }}">
+                        </div>
+                    </div>
+                    
+
+            </div>
+        </div>
+    </div>

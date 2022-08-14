@@ -40,8 +40,8 @@ export class UsuarioService {
     return this.usuario.role;
   }
 
-  get uid():string {
-    return this.usuario.uid || '';
+  get _id():string {
+    return this.usuario._id || '';
   }
 
   get headers() {
@@ -95,8 +95,8 @@ export class UsuarioService {
       }
     }).pipe(
       map( (resp: any) => {
-        const { email, google, nombre, role, img = '', uid } = resp.usuario;
-        this.usuario = new Usuario( nombre, email, '', img, google, role, uid );
+        const { DNI, RUC, sexo, lugar_capacitacion, email, google, nombre, role, img = '', _id } = resp.usuario;
+        this.usuario = new Usuario(DNI, RUC, sexo, lugar_capacitacion, nombre, email, '', img, google, role, _id );
         
         this.guardarLocalStorage( resp.token, resp.menu );
 
@@ -126,7 +126,7 @@ export class UsuarioService {
       role: this.usuario.role
     }
 
-    return this.http.put(`${ base_url }/usuarios/${ this.uid }`, data, this.headers );
+    return this.http.put(`${ base_url }/usuarios/${ this._id }`, data, this.headers );
 
   }
 
@@ -160,7 +160,7 @@ export class UsuarioService {
             .pipe(
               map( resp => {
                 const usuarios = resp.usuarios.map( 
-                  user => new Usuario(user.nombre, user.email, '', user.img, user.google, user.role, user.uid )  
+                  user => new Usuario(user.DNI, user.RUC, user.sexo, user.lugar_capacitacion, user.nombre, user.email, '', user.img, user.google, user.role, user._id )  
                 );
                 return {
                   total: resp.total,
@@ -174,13 +174,13 @@ export class UsuarioService {
   eliminarUsuario( usuario: Usuario ) {
     
       // /usuarios/5eff3c5054f5efec174e9c84
-      const url = `${ base_url }/usuarios/${ usuario.uid }`;
+      const url = `${ base_url }/usuarios/${ usuario._id }`;
       return this.http.delete( url, this.headers );
   }
 
   guardarUsuario( usuario: Usuario ) {
 
-    return this.http.put(`${ base_url }/usuarios/${ usuario.uid }`, usuario, this.headers );
+    return this.http.put(`${ base_url }/usuarios/${ usuario._id }`, usuario, this.headers );
 
   }
 

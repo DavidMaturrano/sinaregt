@@ -1,0 +1,36 @@
+<div class="row animated fadeIn fast">
+    <div class="col-12">
+        <div class="card">
+            <div class="input-group-btn">
+                <input type="text"
+                        class="form-control"
+                        placeholder="Buscar placa..."
+                        #txtTermino
+                        [(ngModel)]="this.search"
+                        />
+            </div>
+            <button class="btn btn-success btn-block waves-effect waves-light m-r-10" (click)="getTransportByPlaca()">Buscar</button>
+        </div>
+    </div>
+</div> 
+<div class="col-md-12">
+    <div class="card">
+        <div class="card-body">
+            <h4 class="card-title">Pantalla de Información</h4>
+            <h6 class="card-subtitle">Información de la Placa</h6>
+
+                <div class="form-group" *ngFor="let estado of placa_info | keyvalue">
+                        <label for="{{estado.key}}" >{{estado.key | uppercase}}</label>
+                        <div class="input-group">
+                            <div class="input-group-addon"><i class="ti-user"></i></div>
+                            <input type="text"
+                                    class="form-control"
+                                    id="{{estado.key}}"
+                                    [(ngModel)]="estado.value"
+                                    value="{{ estado.value }}">
+                        </div>
+                </div>
+
+        </div>
+    </div>
+</div>

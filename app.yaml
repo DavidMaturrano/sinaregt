@@ -1,0 +1,14 @@
+runtime: python27
+api_version: 1
+threadsafe: true
+handlers:
+  - url: /(.*\.(js|css|svg|png|jpg|jpeg|woff|ttf)(|\.map))$
+    static_files: dist/adminpro/\1
+    upload: dist/adminpro/(.*)(|\.map)
+  - url: /.*
+    static_files: dist/adminpro/index.html
+    upload: dist/adminpro/.*
+skip_files:
+  - (?!^dist)
+  
+

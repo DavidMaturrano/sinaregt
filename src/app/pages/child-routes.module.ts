@@ -22,6 +22,7 @@ import { SunatComponent } from './mantenimientos/sunat/sunat/sunat.component';
 import { ReniecComponent } from './mantenimientos/reniec/reniec.component';
 import { TransportesComponent } from './mantenimientos/transportes/transportes.component';
 import { PlacaComponent } from './mantenimientos/placa/placa.component';
+import { FlotasComponent } from './mantenimientos/flotas/flotas.component';
 
 
 const childRoutes: Routes = [
@@ -46,6 +47,7 @@ const childRoutes: Routes = [
   { path: 'reniec', component: ReniecComponent, data: { titulo: 'Reniec API' }},
   { path: 'transport', component: TransportesComponent, data: { titulo: 'Transportes API' }},
   { path: 'placaSearch', component: PlacaComponent, data: { titulo: 'Busqueda por Placa - API' }},
+  { path: 'registroFlota', component: FlotasComponent, data: { titulo: 'Registro de Flota - API' }},
 
   // Rutas de Admin
   { path: 'usuarios', canActivate: [ AdminGuard ], component: UsuariosComponent, data: { titulo: 'Matenimiento de Usuarios' }},

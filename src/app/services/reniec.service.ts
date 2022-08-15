@@ -34,4 +34,13 @@ export class ReniecService {
                 map( (resp: {ok: boolean, message: Reniec }) => resp.message )
               );
   }
+
+  getReniecDataDNI( dni: string ) {
+
+    const url = `${ base_url }/usuarios/reniec/dni/${dni}`;
+    return this.http.get( url, this.headers )
+              .pipe(
+                map( (resp: {ok: boolean, message: Reniec }) => resp.message )
+              );
+  }
 }

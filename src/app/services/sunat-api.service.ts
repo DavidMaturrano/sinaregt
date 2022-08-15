@@ -35,4 +35,13 @@ export class SunatAPIService {
                 map( (resp: {ok: boolean, message: Sunat }) => resp.message )
               );
   }
+
+  getSunatByRUC( ruc: string ) {
+
+    const url = `${ base_url }/usuarios/sunat/ruc/${ruc}`;
+    return this.http.get( url, this.headers )
+              .pipe(
+                map( (resp: {ok: boolean, message: Sunat }) => resp.message )
+              );
+  }
 }

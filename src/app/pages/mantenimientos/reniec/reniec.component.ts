@@ -42,8 +42,7 @@ export class ReniecComponent implements OnInit {
     private reniecService: ReniecService,) {
 
     this.usuario = usuarioService.usuario;
-    /* this.reniecService.getReniecData(this.usuario._id) */
-    this.reniecService.getReniecData("62f4893a128b6dffa113ecda")
+    this.reniecService.getReniecDataDNI("73115908")
         .pipe(delay(0))
         .subscribe(person =>{ this.reniec_object = person })
 }

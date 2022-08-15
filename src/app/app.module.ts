@@ -12,6 +12,7 @@ import { SunatComponent } from './pages/mantenimientos/sunat/sunat/sunat.compone
 import { ReniecComponent } from './pages/mantenimientos/reniec/reniec.component';
 import { TransportesComponent } from './pages/mantenimientos/transportes/transportes.component';
 import { PlacaComponent } from './pages/mantenimientos/placa/placa.component';
+import { FlotasComponent } from './pages/mantenimientos/flotas/flotas.component';
 
 
 
@@ -25,6 +26,7 @@ import { PlacaComponent } from './pages/mantenimientos/placa/placa.component';
     ReniecComponent,
     TransportesComponent,
     PlacaComponent,
+    FlotasComponent,
   ],
   imports: [
     BrowserModule,

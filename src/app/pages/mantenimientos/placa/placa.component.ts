@@ -8,8 +8,19 @@ import { delay } from 'rxjs/operators';
   styleUrls: ['./placa.component.css']
 })
 export class PlacaComponent implements OnInit {
-  public placa_info: any;
+  public placa_info: any = {
+    Description: "",
+    RegistrationYear: "",
+    DeliveryPoint: "",
+    VIN: "",
+    Make: "",
+    Model: "",
+    Owner: "",
+    Use: "",
+    ImageUrl: "",
+  };
   public search: string = ""
+  public mensajeBuscarTransporte: string = ""
 
   constructor(
     private transporteService: TransportesService,) {
@@ -20,22 +31,15 @@ export class PlacaComponent implements OnInit {
   }
 
   getTransportByPlaca(){
-    /* this.transporteService.getTransporteData(this.search)
+    this.transporteService.getTransporteByPlaca(this.search)
           .pipe(delay(0))
           .subscribe(placa_info => { 
-            this.placa_info = placa_info
-          }) */
-      this.placa_info = {
-        Description: "string",
-        RegistrationYear: "string",
-        DeliveryPoint: "string",
-        VIN: "string",
-        Make: "string",
-        Model: "string",
-        Owner: "string",
-        Use: "string",
-        ImageUrl: "string",
-      }
-      console.log(this.search)
+            if(placa_info.ok){
+              this.placa_info = placa_info.message
+              this.mensajeBuscarTransporte = "exito"
+            }else{
+              this.mensajeBuscarTransporte = "error"
+            }
+          })
   }
 }

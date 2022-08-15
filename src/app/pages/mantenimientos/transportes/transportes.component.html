@@ -76,7 +76,7 @@
                                     </span>
                                 <td>
                                     <span>
-                                        {{ transport.usuario.nombre }}
+                                        {{ transport.dni_usuario }}
                                     </span>
                                 </td>
                                 <td>
@@ -131,7 +131,40 @@
                 <h6 class="card-subtitle">Información: Usuario</h6>
 
                 <div class="form-group" *ngFor="let property of usuario | keyvalue">
+                    <div *ngIf="property.key == 'nombre' || property.key == 'tipoDocumento' || property.key == 'numeroDocumento'">
+                    <label for="{{property.key}}" >{{property.key | uppercase}}</label>
+                        <div class="input-group">
+                            <div class="input-group-addon"><i class="ti-user"></i></div>
+                            <input type="text"
+                                    class="form-control"
+                                    id="{{property.key}}"
+                                    [(ngModel)]="property.value"
+                                    value="{{ property.value }}">
+                        </div>
+                    </div>
+                </div>
+
+                <br>
+                <h6 class="card-subtitle">Información: Placa</h6>
+
+                <div class="form-group" *ngFor="let property of placa_info | keyvalue">
                     <div *ngIf="property.key != 'role' && property.key != 'password'">
+                    <label for="{{property.key}}" >{{property.key | uppercase}}</label>
+                        <div class="input-group">
+                            <div class="input-group-addon"><i class="ti-user"></i></div>
+                            <input type="text"
+                                    class="form-control"
+                                    id="{{property.key}}"
+                                    [(ngModel)]="property.value"
+                                    value="{{ property.value }}">
+                        </div>
+                    </div>
+                </div>
+
+                <br>
+                <h6 class="card-subtitle">Información: Empresa</h6>
+                <div class="form-group" *ngFor="let property of sunat_ruc | keyvalue">
+                    <div>
                     <label for="{{property.key}}" >{{property.key | uppercase}}</label>
                         <div class="input-group">
                             <div class="input-group-addon"><i class="ti-user"></i></div>

@@ -1,0 +1,211 @@
+<div class="row animated fadeIn fast">
+    <div class="col-12">
+        <div class="card">
+            <div class="input-group-btn">
+                <input type="text"
+                        class="form-control"
+                        placeholder="Buscar Transporte..."
+                        #txtTransport
+                        [(ngModel)]="this.buscarTransporte"
+                        />
+            </div>
+            <button class="btn btn-success btn-block waves-effect waves-light m-r-10" (click)="getTransport()">Buscar Placa</button>
+            <div *ngIf="mensajeBuscarTransporte == 'exito'" class="text-success">
+                <span>Busqueda éxitosa.</span>
+            </div>
+            <div *ngIf="mensajeBuscarTransporte == 'error'" class="text-danger">
+                <span>Error en la busqueda.</span>
+            </div>
+        </div>
+    </div>
+</div> 
+
+<div class="row animated fadeIn fast">
+    <div class="col-12">
+        <div class="card">
+            <div class="input-group-btn">
+                <input type="text"
+                        class="form-control"
+                        placeholder="Buscar Usuario..."
+                        #txtUsuario
+                        [(ngModel)]="this.buscarUsuario"
+                        />
+            </div>
+            <button class="btn btn-success btn-block waves-effect waves-light m-r-10" (click)="getUsuario()">Buscar por DNI</button>
+            <div *ngIf="mensajeBuscarUsuario == 'exito'" class="text-success">
+                <span>Busqueda éxitosa.</span>
+            </div>
+            <div *ngIf="mensajeBuscarUsuario == 'error'" class="text-danger">
+                <span>Error en la busqueda.</span>
+            </div>
+        </div>
+    </div>
+</div> 
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">Pantalla de Información</h4>
+                <h6 class="card-subtitle">Información: Tranporte</h6>
+
+                    <!-- <div class="form-group" *ngFor="let estado of transport_unit | keyvalue">
+                        <div *ngIf="estado.key != 'ruc_empresa' && estado.key != 'codigo_evaluador'">
+                            <label for="{{estado.key}}" >{{estado.key | uppercase}}</label>
+                            <div class="input-group">
+                                <div class="input-group-addon"><i class="ti-user"></i></div>
+                                <input type="text"
+                                        class="form-control"
+                                        id="{{estado.key}}"
+                                        [(ngModel)]="estado.value"
+                                        value="{{ estado.value }}">
+                            </div>
+                        </div>
+                    </div> -->
+
+                    <div class="form-group">
+                        <label for="numero_placa">NUMERO DE PLACA</label>
+                        <div class="input-group">
+                            <div class="input-group-addon"><i class="ti-user"></i></div>
+                            <input type="text"
+                                        class="form-control"
+                                        id="numero_placa"
+                                        [(ngModel)]="transport_unit.numero_placa"
+                                        value="{{ transport_unit.numero_placa }}">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="dni_usuario">NUMERO DE DNI</label>
+                        <div class="input-group">
+                            <div class="input-group-addon"><i class="ti-user"></i></div>
+                            <input type="text"
+                                        class="form-control"
+                                        id="dni_usuario"
+                                        [(ngModel)]="transport_unit.dni_usuario"
+                                        value="{{ transport_unit.dni_usuario }}">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="flota_vehicular">FLOTA VEHICULAR</label>
+                        <div class="input-group">
+                            <div class="input-group-addon"><i class="ti-user"></i></div>
+                            <input type="text"
+                                        class="form-control"
+                                        id="flota_vehicular"
+                                        [(ngModel)]="transport_unit.flota_vehicular"
+                                        value="{{ transport_unit.flota_vehicular }}">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="paradero">PARADERO</label>
+                        <div class="input-group">
+                            <div class="input-group-addon"><i class="ti-user"></i></div>
+                            <input type="text"
+                                        class="form-control"
+                                        id="paradero"
+                                        [(ngModel)]="transport_unit.paradero"
+                                        value="{{ transport_unit.paradero }}">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="ruta">RUTA</label>
+                        <div class="input-group">
+                            <div class="input-group-addon"><i class="ti-user"></i></div>
+                            <input type="text"
+                                        class="form-control"
+                                        id="ruta"
+                                        [(ngModel)]="transport_unit.ruta"
+                                        value="{{ transport_unit.ruta }}">
+                        </div>
+                    </div>
+
+                    <div class="form-group" *ngFor="let estado of placa_info | keyvalue">
+                        <div *ngIf="estado.key != 'usuario'">
+                            <label for="{{estado.key}}" >{{estado.key | uppercase}}</label>
+                            <div class="input-group">
+                                <div class="input-group-addon"><i class="ti-user"></i></div>
+                                <input type="text"
+                                        class="form-control"
+                                        id="{{estado.key}}"
+                                        [(ngModel)]="estado.value"
+                                        value="{{ estado.value }}">
+                            </div>
+                        </div>
+                    </div>
+                    
+
+                <!-- <br> -->
+                <!-- <h6 class="card-subtitle">Información: Usuario</h6>
+
+                <div class="form-group" *ngFor="let property of usuario | keyvalue">
+                    <div *ngIf="property.key != 'role' && property.key != 'password' && property.key != 'google'">
+                    <label for="{{property.key}}" >{{property.key | uppercase}}</label>
+                        <div class="input-group">
+                            <div class="input-group-addon"><i class="ti-user"></i></div>
+                            <input type="text"
+                                    class="form-control"
+                                    id="{{property.key}}"
+                                    [(ngModel)]="property.value"
+                                    value="{{ property.value }}">
+                        </div>
+                    </div>
+                </div> -->
+                
+                <br>
+                <h6 class="card-subtitle">Información: Usuario</h6>
+
+                <div class="form-group" *ngFor="let property of usuario | keyvalue">
+                    <div *ngIf="property.key == 'nombre' || property.key == 'tipoDocumento' || property.key == 'numeroDocumento'">
+                    <label for="{{property.key}}" >{{property.key | uppercase}}</label>
+                        <div class="input-group">
+                            <div class="input-group-addon"><i class="ti-user"></i></div>
+                            <input type="text"
+                                    class="form-control"
+                                    id="{{property.key}}"
+                                    [(ngModel)]="property.value"
+                                    value="{{ property.value }}">
+                        </div>
+                    </div>
+                </div>
+
+                <br>
+                <h6 class="card-subtitle">Información: Entidades</h6>
+                <div class="form-group">
+                    <label for="empresa" >RUC EMPRESA</label>
+                    <div class="input-group">
+                        <div class="input-group-addon"><i class="ti-user"></i></div>
+                        <input type="text"
+                                    class="form-control"
+                                    id="empresa"
+                                    [(ngModel)]="transport_unit.ruc_empresa"
+                                    value="{{ transport_unit.ruc_empresa }}">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="evaluador" >CÓDIGO EVALUADOR</label>
+                    <div class="input-group">
+                        <div class="input-group-addon"><i class="ti-user"></i></div>
+                        <input type="text"
+                                    class="form-control"
+                                    id="evaluador"
+                                    [(ngModel)]="transport_unit.codigo_evaluador"
+                                    value="{{ transport_unit.codigo_evaluador }}">
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row animated fadeIn fast">
+    <div class="col-12">
+        <div class="card">
+            <button class="btn btn-success btn-block waves-effect waves-light m-r-10" (click)="postRegister()">Registrar</button>
+        </div>
+    </div>
+</div> 

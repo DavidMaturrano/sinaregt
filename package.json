@@ -2,8 +2,8 @@
   "name": "sinaregt",
   "version": "0.0.0",
   "scripts": {
+    "start": "node server.js",
     "ng": "ng",
-    "start": "ng server.js",
     "build": "ng build --prod",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
